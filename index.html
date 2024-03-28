@@ -11,7 +11,8 @@
     <title>Convivial Profiler Builder</title>
     <link rel="icon" type="image/x-icon" href="assets/logo.svg">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/decision_tree_library@0.1.0/style.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/morpht/decision_tree@latest/style.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
@@ -35,8 +36,8 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="p-3">
-                    <button id="refreshBtn" class="btn btn-primary mb-3">Refresh</button>
-                    <textarea id="htmlInput" class="form-control" rows="10" placeholder="Input HTML for Decision Tree"></textarea>
+                    <button id="refreshBtn" class="btn btn-primary mb-3 w-100">Refresh</button>
+                    <textarea id="htmlInput" class="form-control" rows="20" placeholder="Input HTML for Decision Tree"></textarea>
                 </div>
             </div>
             <div class="col-md-6">
@@ -50,16 +51,10 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/decision_tree_library@0.1.0/decision_tree.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/morpht/decision_tree@latest/decision_tree.min.js"></script>
+    <script src="js/example.js"></script>
+    <script src="js/main.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            $('#refreshBtn').click(function () {
-                var htmlCode = $('#htmlInput').val();
-                $('#treeOutput').html(htmlCode);
-            });
-        });
-    </script>
 </body>
 
 </html>
