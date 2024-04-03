@@ -2,9 +2,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     clearExistingStorage();
 
-    const refreshBtn = document.getElementById('refreshBtn');
     const htmlInput = document.getElementById('htmlInput');
+    const refreshBtn = document.getElementById('refreshBtn');
     const treeOutput = document.getElementById('treeOutput');
+
+    htmlInput.addEventListener('input', function() {
+        refreshBtn.classList.remove('disabled');
+    });
     
     refreshBtn.addEventListener('click', function() {
         const htmlCode = htmlInput.value;
