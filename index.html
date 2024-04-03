@@ -1,60 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <meta name="description"
-        content="Convivial Profiler Builder is an online tool for creating, validating and testing profilers for use in your website.">
-    <title>Convivial Profiler Builder</title>
-    <link rel="icon" type="image/x-icon" href="assets/logo.svg">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/morpht/decision_tree@latest/style.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+        <meta name="description"
+            content="Convivial Profiler Builder is an online tool for creating, validating and testing profilers for use in your website.">
+        <title>Convivial Profiler Builder</title>
+        <link rel="icon" type="image/x-icon" href="assets/logo.svg">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/morpht/decision_tree@latest/style.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-jsonview/1.2.3/jquery.jsonview.min.css" />
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
 
-<body>
-    <div id="loadingOverlay"
-        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(5px); z-index: 1000;">
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-            <div class="spinner-border" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-    </div>
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-            <img src="assets/logo.svg" alt="Morpht Logo" height="40">
-            <span class="site-name ml-2">Decision Tree</span>
-        </a>
-        <a href="#" target="_blank" class="mr-3">🕮 Documentation</a>
-    </nav>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="p-3">
-                    <button id="refreshBtn" class="btn btn-primary mb-3 w-100">Refresh</button>
-                    <textarea id="htmlInput" class="form-control" rows="20" placeholder="Input HTML for Decision Tree"></textarea>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div id="treeOutput" class="p-3">
-                    <!-- Decision Tree Rendering Area -->
+    <body>
+        <div id="loadingOverlay"
+            style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(5px); z-index: 1000;">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
                 </div>
             </div>
         </div>
-    </div>
-    
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <img src="assets/logo.svg" alt="Morpht Logo" height="40">
+                <span class="site-name ml-2">Decision Tree</span>
+            </a>
+            <a href="#" target="_blank" class="mr-3">🕮 Documentation</a>
+        </nav>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/morpht/decision_tree@latest/decision_tree.min.js"></script>
-    <script src="js/example.js"></script>
-    <script src="js/main.js"></script>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="py-3">
+                        <textarea id="htmlInput" class="form-control" rows="20" placeholder="Input HTML for Decision Tree"></textarea>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="py-3">
+                        <button id="refreshBtn" class="btn btn-primary mb-3 w-100">Refresh</button>
+                        <div id="treeOutput" class="p-3">
+                            <!-- Decision Tree Rendering Area -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="pt-3">
+                        <div class="card">
+                            <div class="card-body">
+                            <h5 class="card-title">Local Storage</h5>
+                            <p class="card-text" id="local-storage-data">Local storage data will be displayed when a decision tree is initiated.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-3">
+                        <div class="card">
+                            <div class="card-body">
+                            <h5 class="card-title">Cookies</h5>
+                            <p class="card-text" id="cookies-data">Display cookies data when decision tree sets outcome cookie.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-</body>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/morpht/decision_tree@latest/decision_tree.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-jsonview/1.2.3/jquery.jsonview.min.js"></script>
+        <script src="js/example.js"></script>
+        <script src="js/logger.js"></script>
+        <script src="js/main.js"></script>
 
+    </body>
 </html>
