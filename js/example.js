@@ -12,6 +12,7 @@ if (parameter) {
   .then(htmlContent => {
     document.getElementById('htmlInput').value = htmlContent;
     document.getElementById('refreshBtn').click();
+    document.getElementById('refreshBtn').classList.remove('disabled');
   })
   .catch(error => {
     console.error('Error fetching the URL:', error);
