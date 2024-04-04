@@ -1,0 +1,46 @@
+<div class="decision-tree" id="simple-decision-tree">
+    <div class="step" data-cookie="outcome=consent" id="decision-tree-consent">
+      <h3 class="step__heading">
+        Consent to using the Decision Tree
+      </h3>
+      <p class="step__content">
+        Do you consent to using the Decision Tree?
+      </p>
+      <div class="step__answers">
+        <ul>
+          <li>
+            <a class="step__answer" href="#consent-yes" data-answer-path="yes">Yes</a>
+          </li>
+          <li>
+            <a class="step__answer" href="#consent-no" data-answer-path="no">No</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="step" data-cookie="outcome=consent-yes" id="consent-yes">
+      <h3 class="step__heading">
+      </h3>
+      <p class="step__content">
+        You have consented to using the Decision Tree. Thank you!
+      </p>
+    </div>
+    <div class="step" data-cookie="outcome=consent-no" id="consent-no">
+      <h3 class="step__heading">
+  
+      </h3>
+      <p class="step__content">
+        You have not consented to using the Decision Tree.
+      </p>
+    </div>
+    <div class="decision-tree__summary">
+      <h3 class="step__heading">
+      </h3>
+      <div class="decision-tree__summary_infos">
+        &nbsp;
+      </div>
+    </div>
+    <div class="decision-tree__footer">
+      <button class="btn btn-secondary step__button step__button--back">Back</button> <button class="btn btn-secondary step__button step__button--restart">Restart</button>
+    </div>
+  </div>
+  
