@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const htmlInput = document.getElementById('htmlInput');
     const refreshBtn = document.getElementById('refreshBtn');
-    const clearStorageBtn = document.getElementById('clearStorageBtn');
     const treeOutput = document.getElementById('treeOutput');
 
     htmlInput.addEventListener('input', function() {
@@ -24,15 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             console.warn('DecisionTree class is not defined.');
         }
-    });
-
-    clearStorageBtn.addEventListener('click', function() {
-        clearExistingStorage();
-        Swal.fire({
-            title: "Decision tree data cleared!",
-            text: "localStorage & cookies have been cleared",
-            icon: "success"
-          });
     });
 
     document.querySelectorAll('.dropdown-item.example').forEach(span => {
