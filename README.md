@@ -1,6 +1,6 @@
-# Convivial Decision Tree Builder
+# Convivial Convivial Decision Flow Builder
 
-A tool for building decision trees.
+A tool for building decision flows.
 
 ## Local Development
 

@@ -1,32 +1,32 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
     const htmlInput = document.getElementById('htmlInput');
     const refreshBtn = document.getElementById('refreshBtn');
     const treeOutput = document.getElementById('treeOutput');
 
-    htmlInput.addEventListener('input', function() {
+    htmlInput.addEventListener('input', function () {
         refreshBtn.classList.remove('disabled');
     });
-    
-    refreshBtn.addEventListener('click', function() {
+
+    refreshBtn.addEventListener('click', function () {
         const htmlCode = htmlInput.value;
         treeOutput.innerHTML = htmlCode;
         history.replaceState({}, document.title, window.location.pathname + window.location.search);
-        
-        if (typeof DecisionTree === 'function') {
-            const decisionTree = document.querySelector('#treeOutput .decision-tree');
-            if (decisionTree.id) {
-                new DecisionTree(decisionTree.id);
+
+        if (typeof ConvivialDecisionFlow === 'function') {
+            const ConvivialDecisionFlow = document.querySelector('#treeOutput .convivial-decision-flow');
+            if (ConvivialDecisionFlow.id) {
+                new ConvivialDecisionFlow(ConvivialDecisionFlow.id);
             } else {
-                console.warn('Decision tree does not have ID.');
+                console.warn('Convivial decision flow does not have ID.');
             }
         } else {
-            console.warn('DecisionTree class is not defined.');
+            console.warn('ConvivialDecisionFlow class is not defined.');
         }
     });
 
     document.querySelectorAll('.dropdown-item.example').forEach(span => {
-        span.addEventListener('click', function() {
+        span.addEventListener('click', function () {
             switch (this.id) {
                 case "simple-example":
                     fetchExamplesFromFile("simple-example", './examples/index.html');
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
  */
 function clearExistingStorage() {
     localStorage.clear();
-    document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+    document.cookie.split(";").forEach(function (c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
 }
 
 /**

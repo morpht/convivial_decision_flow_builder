@@ -1,18 +1,18 @@
 const treeOutput = document.getElementById('treeOutput');
 
-const observer = new MutationObserver(function(mutations) {
-    mutations.forEach(function() {
-        
+const observer = new MutationObserver(function (mutations) {
+    mutations.forEach(function () {
+
         const localStorageData = document.getElementById('local-storage-data');
         const cookiesData = document.getElementById('cookies-data');
 
-        const decisionTree = document.querySelector('#treeOutput .decision-tree');
-        if (decisionTree.id) {
-            $(localStorageData).JSONView(localStorage.getItem(decisionTree.id));
+        const ConvivialDecisionFlow = document.querySelector('#treeOutput .convivial-decision-flow');
+        if (ConvivialDecisionFlow.id) {
+            $(localStorageData).JSONView(localStorage.getItem(ConvivialDecisionFlow.id));
             const cookieValue = getCookie('outcome');
-            if (cookieValue) $(cookiesData).JSONView({"outcome" : cookieValue});
+            if (cookieValue) $(cookiesData).JSONView({ "outcome": cookieValue });
         } else {
-            console.warn('Decision tree does not have ID.');
+            console.warn('Convivial decision flow does not have ID.');
         }
     });
 });
