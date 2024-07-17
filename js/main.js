@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
         history.replaceState({}, document.title, window.location.pathname + window.location.search);
 
         if (typeof ConvivialDecisionFlow === 'function') {
-            const ConvivialDecisionFlow = document.querySelector('#treeOutput .convivial-decision-flow');
-            if (ConvivialDecisionFlow.id) {
-                new ConvivialDecisionFlow(ConvivialDecisionFlow.id);
+            const flow = document.querySelector('#treeOutput .convivial-decision-flow');
+            if (flow.id) {
+                new ConvivialDecisionFlow(localStorage, flow.id, flow);
             } else {
                 console.warn('Convivial decision flow does not have ID.');
             }
