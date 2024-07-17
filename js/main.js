@@ -34,6 +34,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 case "bookshop-example":
                     fetchExamplesFromFile("bookshop-example", './examples/bookshop.html');
                     break;
+                case "bar-example":
+                    fetchExamplesFromFile("bar-example", './examples/bar.html');
+                    break;
             }
         });
     });
