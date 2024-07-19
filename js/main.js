@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         history.replaceState({}, document.title, window.location.pathname + window.location.search);
 
         if (typeof ConvivialDecisionFlow === 'function') {
-            const flow = document.querySelector('#treeOutput .convivial-decision-flow');
+            const flow = document.querySelector('.convivial-decision-flow');
             if (flow.id) {
                 new ConvivialDecisionFlow(localStorage, flow.id, flow);
             } else {
