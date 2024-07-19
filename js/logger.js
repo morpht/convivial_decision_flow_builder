@@ -8,7 +8,6 @@ const observer = new MutationObserver(function (mutations) {
 
         const ConvivialDecisionFlow = document.querySelector('#treeOutput .convivial-decision-flow');
         if (ConvivialDecisionFlow.id) {
-            console.log('convivial-decision-flow.' + ConvivialDecisionFlow.id);
             $(localStorageData).JSONView(localStorage.getItem('convivial-decision-flow.' + ConvivialDecisionFlow.id));
             const cookieValue = getCookie('outcome');
             if (cookieValue) $(cookiesData).JSONView({ "outcome": cookieValue });
