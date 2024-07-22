@@ -13,16 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
         treeOutput.innerHTML = htmlCode;
         history.replaceState({}, document.title, window.location.pathname + window.location.search);
 
-        if (typeof ConvivialDecisionFlow === 'function') {
-            const flow = document.querySelector('.convivial-decision-flow');
-            if (flow.id) {
-                new ConvivialDecisionFlow(localStorage, flow.id, flow);
-            } else {
-                console.warn('Convivial decision flow does not have ID.');
-            }
-        } else {
-            console.warn('ConvivialDecisionFlow class is not defined.');
-        }
+        initializeConvivialDecisionFlow(); // Call the function here
+
     });
 
     document.querySelectorAll('.dropdown-item.example').forEach(span => {
@@ -65,6 +57,24 @@ function fetchExamplesFromFile(id, filePath) {
             treeOutput.innerHTML = html;
             refreshBtn.click();
             refreshBtn.classList.remove('disabled');
+            initializeConvivialDecisionFlow();
         })
         .catch(error => console.error('Error fetching HTML file:', error));
+}
+
+/**
+ * Initialize the ConvivialDecisionFlow after HTML content is loaded
+ */
+function initializeConvivialDecisionFlow() {
+    if (typeof ConvivialDecisionFlow === 'function') {
+        const flow = document.querySelector('.convivial-decision-flow');
+        if (flow && flow.id) {
+            const df = new ConvivialDecisionFlow(localStorage, flow.id, flow);
+            df.activate();
+        } else {
+            console.warn('Convivial decision flow does not have ID.');
+        }
+    } else {
+        console.warn('ConvivialDecisionFlow class is not defined.');
+    }
 }
