@@ -71,6 +71,8 @@ function initializeConvivialDecisionFlow() {
         if (flow && flow.id) {
             const df = new ConvivialDecisionFlow(localStorage, flow.id, flow);
             df.activate();
+            df.initializeForms();
+            df._initializeFunctionCalls();
         } else {
             console.warn('Convivial decision flow does not have ID.');
         }
