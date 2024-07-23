@@ -20,9 +20,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.dropdown-item.example').forEach(span => {
         span.addEventListener('click', function () {
             switch (this.id) {
-                case "simple-example":
-                    fetchExamplesFromFile("simple-example", './examples/index.html');
-                    break;
                 case "bookshop-example":
                     fetchExamplesFromFile("bookshop-example", './examples/bookshop.html');
                     break;
