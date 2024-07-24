@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-
     const htmlInput = document.getElementById('htmlInput');
     const refreshBtn = document.getElementById('refreshBtn');
     const treeOutput = document.getElementById('treeOutput');
@@ -13,8 +12,18 @@ document.addEventListener('DOMContentLoaded', function () {
         treeOutput.innerHTML = htmlCode;
         history.replaceState({}, document.title, window.location.pathname + window.location.search);
 
-        initializeConvivialDecisionFlow(); // Call the function here
+        // Extract script content using regular expressions
+        let scriptsCode = '';
+        const scriptRegex = /<script\b[^>]*>([\s\S]*?)<\/script>/gi;
+        let match;
+        while ((match = scriptRegex.exec(htmlCode)) !== null) {
+            scriptsCode += match[1] + '\n';
+        }
 
+        console.log(scriptsCode);
+        evalInGlobalScope(scriptsCode);
+
+        initializeConvivialDecisionFlow(); // Call the function here
     });
 
     document.querySelectorAll('.dropdown-item.example').forEach(span => {
@@ -29,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
-
 });
 
 /**
@@ -54,7 +62,17 @@ function fetchExamplesFromFile(id, filePath) {
             treeOutput.innerHTML = html;
             refreshBtn.click();
             refreshBtn.classList.remove('disabled');
+
+            // Extract script content using regular expressions
+            let scriptsCode = '';
+            const scriptRegex = /<script\b[^>]*>([\s\S]*?)<\/script>/gi;
+            let match;
+            while ((match = scriptRegex.exec(html)) !== null) {
+                scriptsCode += match[1] + '\n';
+            }
+
             initializeConvivialDecisionFlow();
+            evalInGlobalScope(scriptsCode);
         })
         .catch(error => console.error('Error fetching HTML file:', error));
 }
@@ -66,14 +84,23 @@ function initializeConvivialDecisionFlow() {
     if (typeof ConvivialDecisionFlow === 'function') {
         const flow = document.querySelector('.convivial-decision-flow');
         if (flow && flow.id) {
-            const df = new ConvivialDecisionFlow(localStorage, flow.id, flow);
-            df.activate();
-            df.initializeForms();
-            df._initializeFunctionCalls();
+            window.df = new ConvivialDecisionFlow(localStorage, flow.id, flow);
+            window.df.activate();
+            window.df.initializeForms();
+            window.df._initializeFunctionCalls();
         } else {
             console.warn('Convivial decision flow does not have ID.');
         }
     } else {
         console.warn('ConvivialDecisionFlow class is not defined.');
     }
+}
+
+/**
+ * Execute the given code in the global scope.
+ *
+ * @param {string} scriptCode - The JavaScript code to execute.
+ */
+function evalInGlobalScope(scriptCode) {
+    (0, eval)(scriptCode);
 }
